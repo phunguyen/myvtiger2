@@ -1,26 +1,28 @@
-import {Page} from 'ionic/ionic';
+import {Page, NavController} from 'ionic/ionic';
 import {AuthService} from '../../providers/auth';
 import {DataService} from '../../providers/data';
+import {ModuleDetailPage} from '../module-detail/module-detail';
 
 @Page({
   	templateUrl: 'build/pages/home/home.html',
 })
 export class HomePage {
-	constructor(auth: AuthService, data: DataService) {
-		this.data = data;
-		this.auth = auth;
+	constructor(nav: NavController, authService: AuthService, dataService: DataService) {
+		this.nav = nav;
+		this.dataService = dataService;
+		this.authService = authService;
 		this.modules = [];
-		if(this.auth.loggedIn()) {
+		if(this.authService.loggedIn()) {
 			this.viewHome();
 		}
 	}
 
 	loggedIn(): boolean {
-		return this.auth.loggedIn();
+		return this.authService.loggedIn();
 	}
 
 	login(): void {
-		this.auth.getAuth(this.username, this.password).then((status) => {
+		this.authService.getAuth(this.username, this.password).then((status) => {
 			if(status) {
 				this.viewHome();
 			}
@@ -28,10 +30,12 @@ export class HomePage {
 	}
 
 	viewHome(): void {
-		this.modules = this.data.getListModules();
+		this.modules = this.dataService.getListModules();
 	}
 
 	viewModule(module): void {
-		console.log(module);
+		this.nav.push(ModuleDetailPage, {
+	      	module: module
+	    });
 	}
 }

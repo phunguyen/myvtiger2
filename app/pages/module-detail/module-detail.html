@@ -1,0 +1,9 @@
+<ion-navbar *navbar>
+  		<ion-title>{{name}}</ion-title>
+</ion-navbar>
+
+<ion-content class="module-detail">
+    <ion-list>
+        <ion-item *ngFor="#record of records" (click)="viewRecord(record)">{{record.label}}</ion-item>
+    </ion-list>
+</ion-content>

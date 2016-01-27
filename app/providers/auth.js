@@ -15,7 +15,7 @@ export class AuthService {
             var creds = "_operation=loginAndFetchModules&username=" + username + "&password=" + password;
             var headers = new Headers();
             headers.append('Content-Type', 'application/x-www-form-urlencoded');
-            this.http.post('http://localhost/citigo/ellsworth/modules/Mobile/api.php', creds, {headers: headers})
+            this.http.post('http://localhost/vtiger/vt61/modules/Mobile/api.php', creds, {headers: headers})
             .map(res => res.json())
             .subscribe(data => resolve(this.saveAuth(data)));
         });
