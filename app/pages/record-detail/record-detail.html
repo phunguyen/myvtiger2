@@ -4,9 +4,10 @@
 <ion-content class="has-header record-detail">
 	<ion-list *ngFor="#block of blocks">
 		<ion-list-header>{{block.label}}</ion-list-header>
-		<ion-item *ngFor="#field of block.fields | objToArr">
+		<ion-item *ngFor="#field of block.fields">
 			<p>{{field.label}}</p>
-			<h3>Airplane!</h3>
+			<h3 *ngIf="field.value.label != undefined">{{field.value.label}}</h3>
+			<h3 *ngIf="field.value.label == undefined">{{field.value}}</h3>
 		</ion-item>
 	</ion-list>
 </ion-content>
