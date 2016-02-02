@@ -21,14 +21,6 @@ export class HomePage {
 		return this.authService.loggedIn();
 	}
 
-	login(): void {
-		this.authService.getAuth(this.username, this.password).then((status) => {
-			if(status) {
-				this.viewHome();
-			}
-		});
-	}
-
 	viewHome(): void {
 		this.modules = this.dataService.getListModules();
 	}

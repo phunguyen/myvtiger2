@@ -1,24 +1,11 @@
 <ion-navbar *navbar>
-    <ion-title *ngIf="!loggedIn()">
-        Login
-    </ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title *ngIf="loggedIn()">
         Home
     </ion-title>
 </ion-navbar>
-<ion-content class="login" *ngIf="!loggedIn()">
-    <ion-list>
-        <ion-input stacked-label>
-            <ion-label>Username</ion-label>
-            <input type="text" [(ngModel)]="username">
-        </ion-input>
-        <ion-input stacked-label>
-            <ion-label>Password</ion-label>
-            <input type="password" [(ngModel)]="password">
-        </ion-input>
-        <button block (click)="login()">Login</button>
-    </ion-list>
-</ion-content>
 <ion-content class="home" *ngIf="loggedIn()">
     <ion-list>
         <ion-item *ngFor="#module of modules" (click)="viewModule(module)">{{module.label}}</ion-item>

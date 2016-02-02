@@ -39,7 +39,7 @@ export class AuthService {
         }
     }
 
-    public logout(): void {
+    public logOut(): void {
         localStorage.removeItem('vtresult');
         localStorage.removeItem('vtsession');
     }
